@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie App</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" name="Title" id="" placeholder="Title" min="2" />
+      <input
+        type="number"
+        min="0"
+        max="10"
+        style="width: 100px"
+        name="Rating"
+        id=""
+        placeholder="Rating"
+      />
+      <button>Submit</button>
+    </form>
+    <div class="container"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+      $(function () {
+        $("form").on("submit", (evt) => {
+          evt.preventDefault();
+          const title = $("input").eq(0).val();
+          const rating = $("input").eq(1).val();
+          $(".container").append(`
+            <p>${title}</p>
+            <p>${rating}</p>
+        `);
+
+          const btn = $("<button>X</button>");
+
+          $(".container").append(btn);
+
+          btn.on("click", (evt) => {
+            evt.target.parentElement.remove();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
